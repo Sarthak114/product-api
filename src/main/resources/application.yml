@@ -1,0 +1,52 @@
+spring:
+  application:
+    name: product-api
+  datasource:
+    url: jdbc:mysql://localhost:3306/productdb?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true
+    username: zest
+    password: zestpass
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    open-in-view: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+        format_sql: true
+    show-sql: false
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+
+server:
+  port: 8080
+  error:
+    include-message: always
+    include-binding-errors: always
+
+app:
+  jwt:
+    secret: ${APP_JWT_SECRET:2F4A7D9C1E8B3F6A0C5D2E9B7A4F1C8E3D6B0A9F5C2E7D1B4A8C3F6E0D9B2A}
+    access-token-expiration-ms: 900000
+    refresh-token-expiration-ms: 604800000
+  security:
+    require-https: false
+  cors:
+    allowed-origins:
+      - http://localhost:3000
+      - http://localhost:8080
+  seed:
+    admin-username: admin
+    admin-password: Admin@123
+    admin-email: admin@zestindia.local
+    user-username: user
+    user-password: User@123
+    user-email: user@zestindia.local
+
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+    operations-sorter: method

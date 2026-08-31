@@ -1,0 +1,17 @@
+target/
+!.mvn/wrapper/maven-wrapper.jar
+.idea/
+*.iml
+*.ipr
+*.iws
+.project
+.classpath
+.settings/
+.vscode/
+*.log
+.DS_Store
+Thumbs.db
+.env
+*.class
+hs_err_pid*
+replay_pid*
